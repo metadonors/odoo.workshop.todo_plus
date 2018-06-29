@@ -11,5 +11,7 @@
         parent="todo_app.menu_todo_task"
         name="Progetti"
         action="action_todo_project"
+        sequence="2"
+
         />
 </odoo>
