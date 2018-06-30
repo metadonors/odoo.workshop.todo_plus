@@ -14,4 +14,26 @@
         sequence="2"
 
         />
+     
+    <record model="ir.ui.view" id="todo_project_form_view">
+        <field name="name">todo.project.form</field>
+        <field name="model">todo.project</field>
+        <field name="arch" type="xml">
+            <form string="ToDo Project Form">
+                <header>
+                    <field name='state' widget='statusbar' clickable="1"/>
+                </header>
+                <sheet>
+                    <!-- Raggruppiamo i campi su due colonne e assegnamo un identificativo ai vari gruppi -->
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="name"/>
+                        </group>
+                    </group>
+
+                    <field name='todo_ids'/>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>
