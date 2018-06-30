@@ -7,4 +7,41 @@
         action="todo_app.action_todo_task"
         sequence="1"
         />
+    
+
+    <record model="ir.ui.view" id="todo_task_form_view_inherited">
+        <field name="name">todo.task.form</field>
+        <field name="model">todo.task</field>
+        <field name="inherit_id" ref="todo_app.todo_task_form_view"/>
+        
+        <!-- ...cerca e modifica i tag XML in questo punto... -->
+        <field name="arch" type="xml">
+            <!-- in fondo al tag header aggiungi un widget per rappresentare il campo state -->
+            <header position="inside">
+                <field name='state' widget='statusbar' clickable="1"/>
+            </header>
+
+            <field name='name' position='after'>
+                <field name='project_id'/>
+            </field>
+
+        
+            <!-- dopo il campo deadline_date aggiungi i campi completed_date e worked_hours -->
+            <field name='deadline_date' position='after'>
+                <field name='completed_date'/>
+                <field name='worked_hours' />
+            </field>
+
+            <!-- dopo il group di nome 'group_top' aggiungi un nuovo group con il campo descrizione -->
+            <group name="group_top" position="after">
+                <group>
+                    <field name="description"/>
+                </group>
+            </group>
+
+            <field name='user_id' position='after'>
+                <field name='tag_ids' widget="many2many_tags"/>
+            </field>
+        </field> 
+    </record>
 </odoo>
