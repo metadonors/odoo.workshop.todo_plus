@@ -6,6 +6,11 @@ class TodoProject(models.Model):
     _name = "todo.project"
 
     name = fields.Char('Name')
+    state = fields.Selection([
+        ('open', 'In corso'),
+        ('closed', 'Chiuso'),
+    ], string='Stato', default='open')
+
     todo_ids = fields.One2many('todo.task', 'project_id', string='Todos')
     todo_counter = fields.Integer(string='Totale Todo', compute='_compute_total_todos')
 
@@ -13,3 +18,4 @@ class TodoProject(models.Model):
     def _compute_total_todos(self):
         for project in self:
             project.todo_counter = len(project.todo_ids)
+
