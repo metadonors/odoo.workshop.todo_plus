@@ -22,3 +22,10 @@ class TodoTask(models.Model):
     internal_notes = fields.Text(string='Note interne')
     project_id = fields.Many2one('todo.project', string='Progetto')
     tag_ids = fields.Many2many('todo.tag', string='Tag')
+
+    project_state = fields.Char(string='Stato progetto', compute='_compute_project_state')
+
+    @api.depends('project_id')
+    def _compute_project_state(self):
+        for todo in self:
+            todo.project_state = todo.project_id.state

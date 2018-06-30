@@ -23,6 +23,7 @@
 
             <field name='name' position='after'>
                 <field name='project_id'/>
+                <field name='project_state'/>
             </field>
 
         

@@ -20,12 +20,14 @@
         <field name="model">todo.project</field>
         <field name="arch" type="xml">
             <form string="ToDo Project Form">
+                <header>
+                    <field name='state' widget='statusbar' clickable="1"/>
+                </header>
                 <sheet>
                     <!-- Raggruppiamo i campi su due colonne e assegnamo un identificativo ai vari gruppi -->
                     <group name="group_top">
                         <group name="group_left">
                             <field name="name"/>
-                            <field name="todo_counter"/>
                         </group>
                     </group>
 
