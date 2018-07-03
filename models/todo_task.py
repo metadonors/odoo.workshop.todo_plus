@@ -23,9 +23,18 @@ class TodoTask(models.Model):
     project_id = fields.Many2one('todo.project', string='Progetto')
     tag_ids = fields.Many2many('todo.tag', string='Tag')
 
-    project_state = fields.Char(string='Stato progetto', compute='_compute_project_state')
-
+    project_state = fields.Char(string='Stato progetto', 
+                            compute='_compute_project_state',
+                            search='_search_project_state',
+                            inverse='_wrtie_project_state')
+    
     @api.depends('project_id')
     def _compute_project_state(self):
         for todo in self:
             todo.project_state = todo.project_id.state
+
+    def _wrtie_project_state(self):
+        self.project_id.state = self.project_state
+    
+    def _search_project_state(self, operator, value):
+        return [('project_id', operator, value)]    

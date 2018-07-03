@@ -7,6 +7,7 @@
         'security/todo_project_acl.xml',
         'security/todo_tag_acl.xml',
         'views/todo_task.xml',
-        'views/todo_project.xml'
+        'views/todo_project.xml',
+        'wizards/todo_wizard.xml'
     ]
 }

@@ -45,4 +45,15 @@
             </field>
         </field> 
     </record>
+
+    <record model="ir.ui.view" id="todo_task_tree_view">
+        <field name="name">todo.task.tree</field>
+        <field name="model">todo.task</field>
+        <field name="inherit_id" ref="todo_app.todo_task_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="is_done" position='after'>
+                <field name='worked_hours' widget='handle'/>
+            </field>
+        </field>
+    </record>
 </odoo>

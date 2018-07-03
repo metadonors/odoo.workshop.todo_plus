@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="todo_task_wizard_view">
+        <field name="name">todo.wizard.form</field>
+        <field name="model">todo.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_right">
+                    <button type="object" name="do_count_todos" string="Conta"/>
+                    <button type="object" name="do_select_all" string="Seleziona tutti"/>
+                </div>
+
+                <field name="todo_ids">
+                    <tree>
+                        <field name="name"/>
+                        <field name="user_id"/>
+                        <field name="deadline_date"/>
+                    </tree>
+                </field>
+
+                <group>
+                    <group> <field name="new_user_id"/></group>   
+                    <group> <field name="new_deadline_date"/></group>   
+                </group>
+
+                <footer>
+                    <button type="object" name="do_mass_update" string="Riassegna" class="oe_highlight"
+                            attrs="{'invisible':[('new_user_id', '=', False)]}"/>
+                    <button special="cancel" string="Annulla"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window 
+        id="todo_app.action_todo_wizard" 
+        name="Todo Wizard" 
+        src_model="todo.task" 
+        res_model="todo.wizard" 
+        view_mode="form" 
+        target="new" 
+        multi="True"/>
+</odoo>
