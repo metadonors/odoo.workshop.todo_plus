@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo> 
-    <act_window 
-        id="action_todo_project"
-        name="Progetti"
-        res_model="todo.project"
-        view_mode="tree,form"
-        />
-    <menuitem
-        id="menu_todo_project"
-        parent="todo_app.menu_todo_task"
-        name="Progetti"
-        action="action_todo_project"
-        sequence="2"
+    <record model="ir.actions.act_window" id="action_todo_project">
+        <field name="name">Projects</field>
+        <field name="res_model">todo.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
 
-        />
+    <record model="ir.ui.menu" id="menu_todo_project">
+        <field name="name">Projects</field>
+        <field name="action" ref="action_todo_project" />
+        <field name="parent_id" ref="todo_app.menu_todo_task" />
+        <field name="sequence" eval="20" />
+    </record>
      
     <record model="ir.ui.view" id="todo_project_form_view">
         <field name="name">todo.project.form</field>
@@ -31,7 +31,6 @@
                         </group>
                     </group>
 
-                    <field name='todo_ids'/>
                 </sheet>
             </form>
         </field>

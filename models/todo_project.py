@@ -8,6 +8,6 @@ class TodoProject(models.Model):
     name = fields.Char('Name')
 
     state = fields.Selection([
-        ('open', 'In corso'),
-        ('closed', 'Chiuso'),
+        ('open', 'Open'),
+        ('closed', 'Closed'),
     ], string='Stato', default='open')
